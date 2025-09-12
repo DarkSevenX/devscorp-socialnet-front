@@ -1,4 +1,7 @@
 import { create } from 'zustand'
+import { authService } from '../service/authService'
+import type { ILogin } from '../model/user'
+import type { IUser } from '../model/user'
 
 type AuthTypes = {
   token: string | null

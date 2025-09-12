@@ -1,59 +1,25 @@
-import { create } from 'zustand'
-import { authService } from '../service/authService'
-import type { ILogin, IUser } from '../model/user'
+import { useState } from 'react'
+import { Login } from '../components/auth/Login'
+import { Register } from '../components/auth/Register'
+import useAuth from '../store/authStore'
 
-type AuthTypes = {
-  token: string | null
-  user: ILogin | null
-  error: string | null
-  login: (loginData: ILogin) => Promise<void>
-  register: (registerData: IUser) => Promise<void>
-  logout: () => void
-  resetError: () => void
-}
+export const AuthPage = () => {
+  const [isLogin, setIsLogin] = useState(true)
+  const { resetError } = useAuth()
 
-const useAuth = create<AuthTypes>((set) => ({
-  token: localStorage.getItem('token') || null,
-  user: null,
-  error: null,
-
-  login: async (loginData: ILogin) => {
-    set({ error: null })
-
-    try {
-      const { user, token } = await authService.login(loginData)
-
-      localStorage.setItem('token', token)
-      localStorage.setItem('user', JSON.stringify(user))
-
-      set({ user, token })
-    } catch (error: any) {
-      console.error('error en login', error)
-      set({ error: error.response.data.message })
-      throw error
-    }
-  },
-
-  register: async (registerData: IUser) => {
-    set({ error: null })
-
-    try {
-      await authService.register(registerData)
-    } catch (error: any) {
-      console.error('error en login', error)
-      set({ error: error.response.data.message })
-      throw error
-    }
-  },
-
-  logout: () => {
-    localStorage.removeItem('token')
-    localStorage.removeItem('user')
-  },
-
-  resetError: () => {
-    set({ error: null })
+  const toggleLogin = () => {
+    resetError()
+    setIsLogin(!isLogin)
   }
-}))
 
-export default useAuth
+  return (
+    <div>
+      <h1>Devscorp</h1>
+      {isLogin ? (
+        <Login toggleLogin={toggleLogin} />
+      ) : (
+        <Register toggleLogin={toggleLogin} />
+      )}
+    </div>
+  )
+}

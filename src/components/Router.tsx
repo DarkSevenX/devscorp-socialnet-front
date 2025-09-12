@@ -1,9 +1,12 @@
-//import {useNavigate} from "../store/routerStore"
+import {useNavigate} from "../store/routerStore"
+import { AuthPage } from "../pages/AuthPage"
+import {Home} from "../pages/Home"
+import {Profile} from "../pages/Profile"
 
 export const Router = () => {
-  //const { route } = useNavigate()
+  const { route } = useNavigate()
 
-  switch () {
+  switch (route) {
     case 'auth':
       return <AuthPage/>
     case 'home':
