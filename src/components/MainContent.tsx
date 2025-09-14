@@ -1,3 +1,5 @@
+import { Nav } from './Nav';
+
 const postsData = [
   {
     username: 'Keyla Poloh',
@@ -34,12 +36,8 @@ export const MainContent = () => {
                 <p className='text-xs text-gray-400'>{post.uploadTime}</p>
               </div>
             </div>
-            <img
-              className='w-full rounded-lg'
-              src={post.image}
-              alt=''
-            />
-            <p className="text-white">description</p>
+            <img className='w-full rounded-lg' src={post.image} alt='' />
+            <p className='text-white'>description</p>
             <div className='flex justify-between text-gray-400 text-sm'>
               <span>💬 24</span>
               <span>❤️ 80</span>
@@ -48,6 +46,7 @@ export const MainContent = () => {
             </div>
           </div>
         ))}
+        <Nav />
       </div>
     </main>
   );
