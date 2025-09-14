@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { authService } from '../service/authService'
+import { AuthService } from '../service/authService'
 import type { ILogin } from '../model/user'
 import type { IUser } from '../model/user'
 
@@ -19,30 +19,31 @@ const useAuth = create<AuthTypes>((set) => ({
   error: null,
 
   login: async (loginData: ILogin) => {
+    const service = new AuthService()
     set({ error: null })
 
     try {
-      const { user, token } = await authService.login(loginData)
+      const { token } = await service.signIn(loginData)
 
       localStorage.setItem('token', token)
-      localStorage.setItem('user', JSON.stringify(user))
 
-      set({ user, token })
+      set({ token })
     } catch (error: any) {
       console.error('error en login', error)
-      set({ error: error.response.data.message })
+      set({ error: error })
       throw error
     }
   },
 
   register: async (registerData: IUser) => {
+    const service = new AuthService()
     set({ error: null })
 
     try {
-      await authService.register(registerData)
-    } catch (error: any) {
+      await service.signUp(registerData)
+    } catch (err: any) {
       console.error('error en login', error)
-      set({ error: error.response.data.message })
+      set({ error: error })
       throw error
     }
   },

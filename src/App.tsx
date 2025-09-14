@@ -8,10 +8,10 @@ function App() {
   const { navigate } = useNavigate();
 
   useEffect(() => {
-    // if (token) {
-    //   navigate('home');
-    // }
-    navigate('home')
+    if (token) {
+      navigate('home');
+    }
+    navigate('auth')
   }, []);
 
   return (
