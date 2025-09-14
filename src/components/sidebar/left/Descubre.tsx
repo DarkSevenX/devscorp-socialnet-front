@@ -1,3 +1,4 @@
+// TODO: fix colorscheme
 const subjectsData = [
   {
     name: 'Matemáticas',

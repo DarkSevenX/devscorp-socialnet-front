@@ -1,6 +1,19 @@
 import { Nav } from './Nav';
+import { FaRegBookmark } from 'react-icons/fa6';
+import { FaRegHeart } from "react-icons/fa";
+import { FiShare2 } from 'react-icons/fi';
+import { FaRegComment } from 'react-icons/fa';
+
 
 const postsData = [
+  {
+    username: 'Davo duh',
+    profileImg:
+      'https://plus.unsplash.com/premium_photo-1757392183699-ab8884a4eb05?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    image:
+      'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    uploadTime: '20m'
+  },
   {
     username: 'Keyla Poloh',
     profileImg:
@@ -37,13 +50,17 @@ export const MainContent = () => {
               </div>
             </div>
             <img className='w-full rounded-lg' src={post.image} alt='' />
-            <p className='text-white'>description</p>
-            <div className='flex justify-between text-gray-400 text-sm'>
-              <span>💬 24</span>
-              <span>❤️ 80</span>
-              <span>🔁 12</span>
-              <span>📤</span>
+            <div className='flex justify-between text-gray-400 text-sm items-center'>
+              <div>
+                <FaRegBookmark className='text-xl'/>
+              </div>
+              <div className='flex flex-row justify-between w-40 items-center'>
+                <FaRegHeart className='text-xl' />
+                <FaRegComment className='text-xl'/>
+                <FiShare2 className='text-xl'/>
+              </div>
             </div>
+            <p className='text-white'>description</p>
           </div>
         ))}
         <Nav />
