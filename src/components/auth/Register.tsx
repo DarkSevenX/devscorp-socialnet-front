@@ -8,8 +8,8 @@ interface RegisterProps {
 }
 
 export const Register = ({ toggleLogin }: RegisterProps) => {
-  const [name, setName] = useState('')
   const [username, setUsername] = useState('')
+  const [email, setMail] = useState('')
   const [password, setPassword] = useState('')
 
   const { register, error } = useAuth()
@@ -20,8 +20,8 @@ export const Register = ({ toggleLogin }: RegisterProps) => {
       const form = e.currentTarget
 
       const newUser: IUser = {
-        name,
         username,
+        email,
         password,
       }
       await register(newUser)
@@ -41,13 +41,13 @@ export const Register = ({ toggleLogin }: RegisterProps) => {
         <div style={{ color: 'red' }}>{error && error}</div>
         <input
           type="text"
-          placeholder="name"
-          onChange={(e) => setName(e.target.value)}
-        />
-        <input
-          type="text"
           placeholder="username"
           onChange={(e) => setUsername(e.target.value)}
+        />
+        <input
+          type="email"
+          placeholder="email"
+          onChange={(e) => setMail(e.target.value)}
         />
         <input
           type="password"

@@ -9,7 +9,7 @@ interface LoginProps {
 }
 
 export const Login = ({ toggleLogin }: LoginProps) => {
-  const [username, setUsername] = useState('')
+  const [email, setMail] = useState('')
   const [password, setPassword] = useState('')
 
   const { login, error } = useAuth()
@@ -20,7 +20,7 @@ export const Login = ({ toggleLogin }: LoginProps) => {
       e.preventDefault()
       const form = e.currentTarget
 
-      const userData: ILogin = { username, password }
+      const userData: ILogin = { email, password }
       await login(userData)
 
       navigate('home')
@@ -36,9 +36,9 @@ export const Login = ({ toggleLogin }: LoginProps) => {
         <h2 >Login</h2>
         <div style={{ color: 'red' }}>{error && error}</div>
         <input
-          type="text"
-          placeholder="username"
-          onChange={(e) => setUsername(e.target.value)}
+          type="email"
+          placeholder="Correo"
+          onChange={(e) => setMail(e.target.value)}
         />
         <input
           type="password"

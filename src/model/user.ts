@@ -1,10 +1,10 @@
 export type IUser = {
-  name: string
+  email: string
   username: string
   password: string
 }
 
 export type ILogin = {
-  username: string
+  email: string
   password: string
 }
