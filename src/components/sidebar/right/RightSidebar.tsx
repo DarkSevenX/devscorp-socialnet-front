@@ -50,7 +50,7 @@ export const RightSidebar = () => {
   }
   
   return (
-    <aside className='hidden overflow-y-scroll scrollbar-hide lg:flex lg:w-85 flex-col bg-black border-l border-neutral-900 fixed right-0 top-0 h-screen p-5 space-y-6'>
+    <aside className='hidden overflow-y-scroll scrollbar-hide lg:flex lg:w-90 flex-col bg-black border-l border-neutral-900 fixed right-0 top-0 h-screen p-5 space-y-6'>
       <div className='flex px-3' onClick={handleLogout}>
         <FiLogOut className='text-white ml-auto hover:cursor-pointer text-lg'/>
       </div>
@@ -59,7 +59,7 @@ export const RightSidebar = () => {
         {discussionsData.map((discussion, index) => (
           <div
             key={index}
-            className='flex justify-between items-center p-3 rounded-lg text-white'
+            className='flex justify-between items-center p-3 text-white border-b-1 border-zinc-900'
           >
             <div>
               <p className='font-semibold text-xl'>{discussion.title}</p>

@@ -1,3 +1,5 @@
+import { PiMedalDuotone } from 'react-icons/pi';
+
 const rankingData = [
   { icon: '🏆', name: 'Guillermo Salgado', points: 390 },
   { icon: '🏆', name: 'Amílkar', points: 380 },
@@ -14,11 +16,11 @@ export const Ranking = () => {
         {rankingData.map((user, index) => (
           <div
             key={index}
-            className='flex items-center justify-between  border-b border-neutral-900'
+            className='flex items-center justify-between  border-b border-neutral-900 py-2'
           >
             <span className='flex items-center space-x-2 text-white'>
-              <span className='px-4 py-1 bg-blue-400 rounded-2xl'>
-                {user.icon}
+              <span className='px-4 py-2 bg-blue-400 rounded-2xl'>
+                <PiMedalDuotone className='text-black font-bold' />
               </span>{' '}
               <img
                 className='rounded-full w-8 h-8 ml-3 mr-2'

@@ -3,7 +3,7 @@ import { FaRegBookmark } from 'react-icons/fa6';
 import { FaRegHeart } from "react-icons/fa";
 import { FiShare2 } from 'react-icons/fi';
 import { FaRegComment } from 'react-icons/fa';
-
+import { useState } from 'react';
 
 const postsData = [
   {
@@ -33,9 +33,17 @@ const postsData = [
 ];
 
 export const MainContent = () => {
+  const [likedPosts, setLikedPosts] = useState<boolean[]>(postsData.map(() => false));
+
+  const toggleLike = (index: number) => {
+    const newLikes = [...likedPosts];
+    newLikes[index] = !newLikes[index];
+    setLikedPosts(newLikes);
+  };
+
   return (
-    <main className='flex-1 md:mx-64 lg:mx-80 overflow-y-auto bg-black'>
-      <div className='max-w-2xl mx-auto p-6 space-y-6'>
+    <main className='flex-1 md:mx-64 lg:mx-80 overflow-y-auto bg-black scrollbar-hide'>
+      <div className='max-w-xl mx-auto p-2 space-y-6'>
         {postsData.map((post, index) => (
           <div className='rounded-xl p-4 space-y-4' key={index}>
             <div className='flex items-center space-x-3'>
@@ -52,12 +60,23 @@ export const MainContent = () => {
             <img className='w-full rounded-lg' src={post.image} alt='' />
             <div className='flex justify-between text-gray-400 text-sm items-center'>
               <div>
-                <FaRegBookmark className='text-xl'/>
+                <FaRegBookmark className='text-xl hover:cursor-pointer hover:text-white'/>
               </div>
               <div className='flex flex-row justify-between w-40 items-center'>
-                <FaRegHeart className='text-xl' />
-                <FaRegComment className='text-xl'/>
-                <FiShare2 className='text-xl'/>
+                {/* Cambiamos entre corazón vacío y lleno según el estado */}
+                {likedPosts[index] ? (
+                  <FaRegHeart
+                    className='text-xl text-red-500 hover:cursor-pointer transition-all duration-150 ease-in-out'
+                    onClick={() => toggleLike(index)}
+                  />
+                ) : (
+                  <FaRegHeart
+                    className='text-xl hover:cursor-pointer hover:text-white transition-all duration-150 ease-in-out'
+                    onClick={() => toggleLike(index)}
+                  />
+                )}
+                <FaRegComment className='text-xl hover:cursor-pointer hover:text-white transition-all duration-150 ease-in-out' />
+                <FiShare2 className='text-xl hover:cursor-pointer hover:text-white transition-all duration-150 ease-in-out' />
               </div>
             </div>
             <p className='text-white'>description</p>
