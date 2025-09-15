@@ -3,6 +3,9 @@ import { BsBook } from 'react-icons/bs';
 import { FiCommand } from 'react-icons/fi';
 import { PiCurrencyDollarBold } from 'react-icons/pi';
 import { FiCompass } from 'react-icons/fi';
+import { FiLogOut } from "react-icons/fi";
+import useAuth from '../../../store/authStore';
+import {useNavigate} from '../../../store/routerStore';
 
 const discussionsData = [
   {
@@ -38,8 +41,19 @@ const discussionsData = [
 ];
 
 export const RightSidebar = () => {
+  const { logout } = useAuth()
+  const { navigate } = useNavigate()
+  
+  const handleLogout = () => {
+    logout()
+    navigate('auth')
+  }
+  
   return (
     <aside className='hidden overflow-y-scroll scrollbar-hide lg:flex lg:w-85 flex-col bg-black border-l border-neutral-900 fixed right-0 top-0 h-screen p-5 space-y-6'>
+      <div className='flex px-3' onClick={handleLogout}>
+        <FiLogOut className='text-white ml-auto hover:cursor-pointer text-lg'/>
+      </div>
       <h2 className='text-lg font-bold text-white'>Discusiones activas</h2>
       <div className='flex flex-col space-y-3 text-sm'>
         {discussionsData.map((discussion, index) => (
