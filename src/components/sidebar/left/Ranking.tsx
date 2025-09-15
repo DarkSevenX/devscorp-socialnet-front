@@ -14,7 +14,7 @@ export const Ranking = () => {
         {rankingData.map((user, index) => (
           <div
             key={index}
-            className='flex items-center justify-between p-4 border-b border-neutral-900'
+            className='flex items-center justify-between  border-b border-neutral-900'
           >
             <span className='flex items-center space-x-2 text-white'>
               <span className='px-4 py-1 bg-blue-400 rounded-2xl'>
