@@ -1,39 +1,48 @@
+import { FiFeather } from "react-icons/fi";
+import { BsBook } from "react-icons/bs";
+import { FiCodesandbox } from "react-icons/fi";
+import { FiCommand } from "react-icons/fi";
+import { PiCurrencyDollarBold } from "react-icons/pi";
+import { FiKey } from "react-icons/fi";
+import { FiCompass } from "react-icons/fi";
+
+
 // TODO: fix colorscheme
 const subjectsData = [
   {
     name: 'Matemáticas',
-    icon: '📦',
-    color: 'bg-green-500'
+    icon: <FiCodesandbox />,
+    color: 'bg-green-400'
   },
   {
     name: 'Castellano',
-    icon: '📖',
-    color: 'bg-yellow-400'
+    icon: <BsBook/>,
+    color: 'bg-yellow-300'
   },
   {
     name: 'Informática',
-    icon: '⌘',
+    icon: <FiCommand/>,
     color: 'bg-blue-400'
   },
   {
     name: 'Filosofía',
-    icon: '🔗',
+    icon: <FiFeather/>,
     color: 'bg-purple-400'
   },
   {
     name: 'Economía',
-    icon: '$',
-    color: 'bg-pink-500'
+    icon: <PiCurrencyDollarBold />,
+    color: 'bg-pink-400'
   },
   {
     name: 'Política',
-    icon: '🔑',
-    color: 'bg-orange-400'
+    icon: <FiKey/>,
+    color: 'bg-red-400'
   },
   {
     name: 'Humanidades',
-    icon: '📜',
-    color: 'bg-amber-600'
+    icon: <FiCompass />,
+    color: 'bg-orange-200'
   }
 ];
 
