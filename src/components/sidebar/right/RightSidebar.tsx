@@ -59,7 +59,9 @@ export const RightSidebar = () => {
         {discussionsData.map((discussion, index) => (
           <div
             key={index}
-            className='flex justify-between items-center p-3 text-white border-b-1 border-zinc-900'
+            className='flex justify-between items-center p-3 text-white border-b-1 border-zinc-900 hover:cursor-pointer
+            hover:border-zinc-800 transition-all duration-200 ease-in-out
+            '
           >
             <div>
               <p className='font-semibold text-xl'>{discussion.title}</p>
