@@ -31,7 +31,10 @@ export const Login = ({ toggleLogin }: LoginProps) => {
   };
 
   return (
-    <div className='bg-white w-1/2 flex justify-center rounded-bl-2xl rounded-tl-2xl'>
+    <div className='bg-white w-3/4 sm:w-1/2 md:w-1/2 lg:w-1/2 flex h-1/2 
+    md:h-full sm:h-full lg:h-full justify-center rounded-2xl
+    sm:rounded-br-none sm:rounded-tr-none
+    '>
       <form
         onSubmit={handleSubmit}
         className='flex flex-col items-center justify-center w-2/3 gap-5'

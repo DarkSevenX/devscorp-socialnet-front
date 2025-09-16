@@ -35,7 +35,12 @@ export const Register = ({ toggleLogin }: RegisterProps) => {
   };
 
   return (
-    <div className='bg-white w-1/2 flex justify-center rounded-bl-2xl rounded-tl-2xl'>
+    <div
+      className='bg-white w-3/4 sm:w-1/2 md:w-1/2 lg:w-1/2 flex h-1/2 
+    md:h-full sm:h-full lg:h-full justify-center rounded-2xl
+    sm:rounded-br-none sm:rounded-tr-none
+    '
+    >
       <form
         onSubmit={handleRegister}
         className='flex flex-col items-center justify-center w-2/3 gap-5'
@@ -68,9 +73,13 @@ export const Register = ({ toggleLogin }: RegisterProps) => {
           registrarse
         </button>
         <p>
-          ¿ya tienes cuenta? <button onClick={toggleLogin}
+          ¿ya tienes cuenta?{' '}
+          <button
+            onClick={toggleLogin}
             className='text-blue-500 hover:cursor-pointer hover:text-black transition-all duration-300 ease-in-out'
-          >Login</button>
+          >
+            Login
+          </button>
         </p>
       </form>
     </div>
