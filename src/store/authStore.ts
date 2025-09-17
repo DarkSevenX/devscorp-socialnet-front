@@ -43,7 +43,7 @@ const useAuth = create<AuthTypes>((set) => ({
       console.log(token)
       console.log(userData)
       setCookie('token', token, 7)
-      localStorage.setItem('user', userData)
+      localStorage.setItem('user', JSON.stringify(userData))
 
       set({ token })
     } catch (error: any) {

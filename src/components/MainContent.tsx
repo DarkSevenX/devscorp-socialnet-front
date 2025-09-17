@@ -3,7 +3,7 @@ import { FaRegBookmark } from 'react-icons/fa6';
 import { FaRegHeart } from "react-icons/fa";
 import { FiShare2 } from 'react-icons/fi';
 import { FaRegComment } from 'react-icons/fa';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const postsData = [
   {
@@ -278,8 +278,25 @@ const postsData = [
   }
 ];
 
+function getLocalPosts() {
+  return JSON.parse(localStorage.getItem('userPosts') || '[]');
+}
+
+
 export const MainContent = () => {
+  const [localPosts, setLocalPosts] = useState<any[]>(getLocalPosts());
+  const allPosts = [...localPosts, ...postsData];
   const [likedPosts, setLikedPosts] = useState<boolean[]>(postsData.map(() => false));
+
+  useEffect(() => {
+    setLocalPosts(getLocalPosts());
+  }, []);
+
+  useEffect(() => {
+    setLikedPosts(allPosts.map(() => false));
+    // eslint-disable-next-line
+  }, [localPosts.length]);
+
 
   const toggleLike = (index: number) => {
     const newLikes = [...likedPosts];
@@ -287,10 +304,14 @@ export const MainContent = () => {
     setLikedPosts(newLikes);
   };
 
+  const handleNewPost = () => {
+    setLocalPosts(getLocalPosts());
+  };
+
   return (
     <main className='flex-1 md:mx-64 lg:mx-80 overflow-y-auto bg-black scrollbar-hide'>
       <div className='max-w-xl mx-auto p-2 space-y-6'>
-        {postsData.map((post, index) => (
+        {allPosts.map((post, index) => (
           <div className='rounded-xl p-4 space-y-4' key={index}>
             <div className='flex items-center space-x-3'>
               <img
@@ -328,7 +349,8 @@ export const MainContent = () => {
             <p className='text-white'>{post.description}</p>
           </div>
         ))}
-        <Nav />
+                <Nav onNewPost={handleNewPost} />
+
       </div>
     </main>
   );
