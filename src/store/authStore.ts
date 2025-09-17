@@ -38,10 +38,12 @@ const useAuth = create<AuthTypes>((set) => ({
     set({ error: null })
 
     try {
-      const { token } = await service.signIn(loginData)
+      const { token, userData } = await service.signIn(loginData)
 
       console.log(token)
+      console.log(userData)
       setCookie('token', token, 7)
+      localStorage.setItem('user', userData)
 
       set({ token })
     } catch (error: any) {

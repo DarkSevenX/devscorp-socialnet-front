@@ -5,7 +5,6 @@ import { useNavigate } from './store/routerStore';
 
 function App() {
   const { token } = useAuth();
-  console.log(token)
   const { navigate } = useNavigate();
 
   useEffect(() => {

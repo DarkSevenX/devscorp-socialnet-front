@@ -15,8 +15,9 @@ export class AuthService {
 
   async signIn (user) {
     const {data, error} = await supabase.auth.signInWithPassword(user)
-    const token = data.access_token
     if (error) throw error
-    return {token}
+    const token = data.session?.access_token
+    const userData = data.user
+    return { token, userData }
   }
 }

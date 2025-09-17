@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Login } from '../components/auth/Login';
 import { Register } from '../components/auth/Register';
 import useAuth from '../store/authStore';
-import logo from '../../public/logo.png'
+import logo from '/logo.png'
 
 export const AuthPage = () => {
   const [isLogin, setIsLogin] = useState(true);
